@@ -1,0 +1,16 @@
+public class ForTest1 {
+
+	public static void main(String[] args) {
+		
+		String str ="";
+		
+		
+		//랜덤 6개를 발생해서 출력
+		for(int i = 1; i<=6; i++ ) {
+			int rand = (int)(Math.random()*45+1);//1-45	까지의 숫자중에서
+			str +=rand+","; //rand에 결과가 입력될때마다 str에 저장. 누적변수
+		}
+		System.out.println(str);
+	}
+
+}

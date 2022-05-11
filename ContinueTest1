@@ -1,0 +1,29 @@
+public class ContinueTest1 {
+
+	public static void main(String[] args) {
+
+		String str ="";
+		//1~100까지의 짝수만 출력
+		for(int i=1; i<=100; i++) {
+			
+			//짝수인지 비교
+			if(i%2==0) str +=i+" ";
+			
+		}
+		
+		System.out.println("짝수들 : " +str);
+		System.out.println();
+		System.out.println("--------------------");
+
+		str="";
+		
+		for(int i= 1; i<=100; i++) {
+		   //홀수이냐?
+			if(i%2!=0) continue;
+			//짝수들
+			str+=i+" "; //else 생략가능
+		}
+	System.out.println("짝수들 " + str);
+	}
+
+}

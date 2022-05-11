@@ -1,0 +1,38 @@
+public class ContinueTest2 {
+
+	public static void main(String[] args) {
+		//객체생성
+		Conti2 con2 = new Conti2();
+		//메소드1호출
+		con2.proc1();
+		//메소드2호출
+		con2.contiProc();
+	}
+
+}
+class Conti2{
+	//1~100사이의 수 중 3의 배수인 것만 출력
+	
+	//누적변수 선언
+	String str="";
+	
+	//continue없는 메소드
+	public void proc1() {
+		for(int i=1; i<=100; i++) {
+			if(i%3==0) str+=i+" ";
+		}System.out.println("3의 배수 : "+str);
+		System.out.println("--------------------------");
+	}
+
+
+	//continue 사용 메소드
+	public void contiProc(){
+	//str초기화
+		str ="";
+		for(int i=1; i<=100; i++) {
+			if(i%3!=0) continue;
+			str+=i+" ";
+		}System.out.println("3의 배수 : "+str);
+	}
+	
+}

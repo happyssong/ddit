@@ -1,0 +1,42 @@
+public class MultiLoop3 {
+
+	public static void main(String[] args) {
+		
+		
+	//Multi3객체생성
+	Multi3 mul3 = new Multi3();
+	
+		
+	//Multi1()메소드호출
+		mul3.multi1();
+		
+	}
+
+}
+class Multi3{
+	public void multi1(){
+		int hap=0;
+		String str = "";
+		
+		for(int i=1; i<=3; i++){
+		//while에서 채워진 값을 다시 한번 초기화
+			
+			int rand =0;
+			int k =1;
+			while(k<=5){
+				rand=(int)(Math.random()*100+1);
+				str += rand+" ";
+				hap +=rand;
+				k++;
+			}
+			//출력
+			System.out.println(str);
+			System.out.println(hap);
+			
+			//여기서 초기화해도 됨
+			hap=0;
+			str = "";
+		}
+		
+	}
+}

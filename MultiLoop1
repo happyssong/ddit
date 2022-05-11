@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class MultiLoop1 {
+
+	public static void main(String[] args) {
+		//구구단수를 입력
+		Scanner scr = new Scanner(System.in);
+	for(int j =1; j<=3;j++) {	//구구단을 반복할 횟수
+			System.out.println("수를 입력 : ");
+			
+			int a = scr.nextInt();
+			//구구단 출력
+			for(int i = 1; i<=9;i++) {//안의 반복루프가 다 실행되어야 밖의 반복문실행
+				System.out.println(a+"*"+i+"="+a*i);
+					
+			}
+		}		
+	}
+}			
+	

@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class WhileTest7 {
+
+	public static void main(String[] args) {
+			
+		Scanner sc = new Scanner(System.in);
+		
+		//계속 입력 - 0을 입력하면 종료
+		int count =1;
+		String str = "";	
+		while(true) {//==for( ; ; )
+			
+			//입력
+			System.out.println("수"+count+" 입력 : ");
+			int x = sc.nextInt();
+			if(x==0) break;
+			
+			str += x+" ";
+			
+			count ++;
+	
+		}
+		
+		System.out.println(str);
+		
+		
+	}
+
+}

@@ -1,0 +1,35 @@
+public class Whiletest8 {
+
+	public static void main(String[] args) {
+		
+	Scanner sc =new Scanner(System.in);
+		
+		//변수 선언
+		String str=" ";
+		//올바른 값과 모두입력된 값
+		int count =0;
+		String strAll="";
+		while(true) {
+			//입력
+			System.out.println("수 입력 : ");
+			int x=sc.nextInt();			
+			strAll+=x+"  "; //입력된 모든 수를 저장
+			//입력값 비교 1~100범위의 수를str변수에 누적, count ++
+			if(1<=x && x<=100) {
+				str+=x+"  ";
+				count++;
+			}
+			//count break 조건 판단
+			if(count==5) break;
+			
+		}
+		
+		System.out.println("모두 입력된 값 : " +strAll);
+		System.out.println("올바른 값 : " + str);
+		
+		
+	}
+
+
+
+}

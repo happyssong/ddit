@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap 
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="jdbcboard">
+	
+	<insert id="insertBoard" parameterClass="boardVo">
+		insert into jdbc_board 
+			  (board_no, board_title, board_writer, board_date, board_cnt, board_content) 
+		values( board_seq.nextval, #board_title#, #board_writer#, sysdate, 0, #board_content#)
+	</insert>
+	
+	<delete id="deleteBoard" parameterClass="int">
+		delete from jdbc_board where board_no = #board_no# 
+	</delete>
+	
+	<update id="updateBoard" parameterClass="boardVo">
+		update jdbc_board set 
+			board_title = #board_title# ,
+			board_date = sysdate, 
+			board_content = #board_content# 
+		where board_no = #board_no#
+	</update>
+
+	<select id="getBoard" parameterClass="int" resultClass="boardVo">
+		select board_no, board_title, board_writer, 
+				to_char(board_date, 'YYYY-MM-DD') board_date, 
+				board_cnt, board_content 
+		from jdbc_board 
+		where board_no = #board_no# 
+	</select>
+	
+	<select id="getAllBoardList" resultClass="boardVo">
+		select board_no, board_title, board_writer, 
+				to_char(board_date, 'YYYY-MM-DD') board_date, 
+				board_cnt, board_content 
+		from jdbc_board  
+		order by board_no desc
+	</select>
+	
+	<select id="getSearchBoardList" parameterClass="string" resultClass="boardVo">
+		select board_no, board_title, board_writer, 
+				to_char(board_date, 'YYYY-MM-DD') board_date, 
+				board_cnt, board_content 
+		from jdbc_board  
+		where board_title like '%' || #board_title# || '%' 
+		order by board_no desc 
+	</select>
+	
+	<update id="boardCountIncrement" parameterClass="int">
+		update jdbc_board set board_cnt = board_cnt + 1 
+		where board_no = #board_no#
+	</update>
+	
+</sqlMap>	
+	
+
+	
+	
+	
+	
+	
+	
+	

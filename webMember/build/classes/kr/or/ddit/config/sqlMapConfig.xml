@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig
+		PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+		"http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+	<!-- 
+		DB와 연결하는 정보를 properties파일에 설정해 놓고
+		이 properties파일의 내용을 읽어와 설정한다.
+	 -->
+	<properties resource="kr/or/ddit/config/dbinfo.properties"/>
+	
+	<settings cacheModelsEnabled="true"
+						enhancementEnabled="true"
+						lazyLoadingEnabled="true"
+						maxRequests="32"
+						maxSessions="10"
+						maxTransactions="5"
+						useStatementNamespaces="true"	/>
+						
+	<!-- 
+			vo클래스등의 이름이 패키지명까지 기술하면
+			길어지는데 이것을 간단히 표시하기 위한 alias를
+			지정하는 방법
+			<typeAlias alias="alias명" type="클래스의풀네임"/>
+	 -->
+	<typeAlias alias="memVo" type="kr.or.ddit.vo.MemberVO"/>
+							
+	<!-- DB와의 연결을 처리하는 부분 -->
+
+	 
+	 <!-- 방법2 : sqlMapCofig.properties파일 이용하기 -->
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE"><!-- 직접 설정 -->
+			<property name="JDBC.Driver" value="${driver}"/>
+			<property name="JDBC.ConnectionURL" value="${url}"/>
+			<property name="JDBC.Username" value="${user}"/>
+			<property name="JDBC.Password" value="${pass}"/>
+		</dataSource>
+	</transactionManager>
+
+	
+	<!-- 
+		sql문을 처리하는 부분은 xml문서로 따로 만든 후
+		그 xml문서를 아래와 같이 연결하여 사용한다.
+	-->
+	<!-- sql문을 처리하는 sqlMap 태그들을 기술한다. -->
+	<!-- <sqlMap resource="경로명/파일명.xml"/> -->
+	<sqlMap resource="kr/or/ddit/mapping/mymember.xml"/>
+		
+</sqlMapConfig>
+

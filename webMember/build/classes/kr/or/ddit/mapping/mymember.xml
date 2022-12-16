@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="mymember">
+	<select id="getMemberCount" resultClass="int">
+		SELECT COUNT(*) FROM MYMEMBER 
+	</select>
+	
+	<select id="getMemberList" resultClass="memVo">
+		SELECT MEM_ID, MEM_PASS, MEM_NAME, MEM_TEL, MEM_ADDR, MEM_PHOTO 
+			FROM MYMEMBER
+	</select>
+	
+	<insert id="insertMember" parameterClass="memVo">
+		INSERT INTO MYMEMBER(MEM_ID, MEM_PASS, MEM_NAME, MEM_TEL, MEM_ADDR, MEM_PHOTO) 
+		VALUES (#mem_id#, #mem_pass#, #mem_name#, #mem_tel#, #mem_addr#, #mem_photo#)
+	</insert>
+	 
+	<delete id="deleteMember" parameterClass="String">
+		DELETE FROM MYMEMBER WHERE MEM_ID=#mem_id#
+	</delete>
+	
+	<update id="updateMember" parameterClass="memVo">
+		UPDATE MYMEMBER 
+			SET MEM_NAME=#mem_name#, MEM_PASS=#mem_pass#, MEM_TEL=#mem_tel#, MEM_ADDR=#mem_addr#, MEM_PHOTO=#mem_photo# 
+		WHERE MEM_ID=#mem_id#
+	</update>
+	
+	<select id="getMember" parameterClass="String" resultClass="memVo">
+		SELECT * FROM MYMEMBER 
+		WHERE MEM_ID = #mem_id#
+	</select>
+</sqlMap>
